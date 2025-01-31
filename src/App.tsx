@@ -1,6 +1,7 @@
 import { css } from "../styled-system/css";
-import { Container } from "./layers";
-import { Content } from "./layers";
+
+import { Container, Content } from "./layers";
+import { Button } from "./components";
 
 function App() {
 	return (
@@ -16,7 +17,8 @@ function App() {
 					<span>2</span>
 				</Content>
 			</Container>
-			<button>버튼</button>
+
+			<Button>버튼</Button>
 		</div>
 	);
 }

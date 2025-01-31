@@ -95,8 +95,8 @@ export const Container = styled("div", {
 			},
 			fit: {
 				width: "auto",
-				display: "inline-block"
-			}
+				display: "inline-block",
+			},
 		},
 	},
 	defaultVariants: {
