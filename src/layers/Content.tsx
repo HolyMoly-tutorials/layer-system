@@ -1,5 +1,6 @@
-// components/layers/content.tsx
 import { styled } from "../../styled-system/jsx";
+
+// TODO: padding 규격화할 수 있는지 디자이너와 협의 필요
 
 export const Content = styled("div", {
 	base: {

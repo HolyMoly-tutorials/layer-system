@@ -1,108 +1,82 @@
-import { styled } from "../../styled-system/jsx";
+import { Slot } from "@radix-ui/react-slot";
+import { ReactNode } from "react";
+import { css } from "../../styled-system/css";
 
-export const Container = styled("div", {
-	base: {
-		position: "relative",
-		overflow: "hidden",
-	},
-	variants: {
-		backgroundColor: {
-			transparent: {
-				backgroundColor: "transparent",
-			},
-			primary: {
-				backgroundColor: "var(--primary)",
-			},
-			secondary: {
-				backgroundColor: "var(--secondary)",
-			},
-			success: {
-				backgroundColor: "var(--success)",
-			},
-			warning: {
-				backgroundColor: "var(--warning)",
-			},
-			danger: {
-				backgroundColor: "var(--danger)",
-			},
-			hint: {
-				backgroundColor: "var(--hint)",
-			},
-			contrast: {
-				backgroundColor: "var(--contrast)",
-			},
-		},
-		borderRadius: {
-			none: { borderRadius: "0" },
-			sm: { borderRadius: "var(--border-radius-100)" },
-			md: { borderRadius: "var(--border-radius-300)" },
-			lg: { borderRadius: "var(--border-radius-500)" },
-			full: { borderRadius: "50%" },
-		},
-		height: {
-			none: {
-				height: "auto",
-			},
-			25: {
-				height: "var(--dimension-025)",
-			},
-			50: {
-				height: "var(--dimension-050)",
-			},
-			75: {
-				height: "var(--dimension-075)",
-			},
-			100: {
-				height: "var(--dimension-100)",
-			},
-			150: {
-				height: "var(--dimension-150)",
-			},
-			175: {
-				height: "var(--dimension-175)",
-			},
-			200: {
-				height: "var(--dimension-200)",
-			},
-			225: {
-				height: "var(--dimension-225)",
-			},
-			250: {
-				height: "var(--dimension-250)",
-			},
-			300: {
-				height: "var(--dimension-300)",
-			},
-			400: {
-				height: "var(--dimension-400)",
-			},
-			500: {
-				height: "var(--dimension-500)",
-			},
-			600: {
-				height: "var(--dimension-600)",
-			},
-			700: {
-				height: "var(--dimension-700)",
-			},
-			800: {
-				height: "var(--dimension-800)",
-			},
-		},
-		width: {
-			full: {
-				width: "100%",
-			},
-			fit: {
-				width: "auto",
-				display: "inline-block",
-			},
-		},
-	},
-	defaultVariants: {
-		borderRadius: "md",
-		backgroundColor: "transparent",
-		height: "none",
-		width: "full",
-	},
-});
+// TODO: size prop 추가할 수 있는지 디자이너와 협의 필요
+// TODO: height 규격화할 수 있는지 디자이너와 협의 필요
+
+type ContainerProps = {
+	asChild?: boolean;
+	children: ReactNode;
+	backgroundColor?:
+		| "transparent"
+		| "primary"
+		| "secondary"
+		| "success"
+		| "warning"
+		| "danger"
+		| "hint"
+		| "contrast";
+	borderRadius?:
+		| "000"
+		| "050"
+		| "100"
+		| "200"
+		| "300"
+		| "400"
+		| "500"
+		| "600"
+		| "700"
+		| "800"
+		| "900"
+		| "950";
+	height?:
+		| "auto"
+		| "25"
+		| "50"
+		| "75"
+		| "100"
+		| "150"
+		| "175"
+		| "200"
+		| "225"
+		| "250"
+		| "300"
+		| "400"
+		| "500"
+		| "600"
+		| "700"
+		| "800";
+	width?: "stretch" | "fit";
+	className?: string;
+};
+
+export const Container = ({
+	asChild,
+	children,
+	backgroundColor = "transparent",
+	borderRadius = "300",
+	height = "auto",
+	width = "stretch",
+	className,
+	...props
+}: ContainerProps) => {
+	const Comp = asChild ? Slot : "div";
+
+	return (
+		<Comp
+			{...props}
+			className={`${css({
+				position: "relative",
+				overflow: "hidden",
+				backgroundColor: `var(--${backgroundColor})`,
+				borderRadius: `var(--border-radius-${borderRadius})`,
+				height: height === "auto" ? "auto" : `var(--dimension-${height})`,
+				width: width === "stretch" ? "100%" : "auto",
+				display: width === "fit" ? "inline-block" : undefined,
+			})} ${className || ""}`}
+		>
+			{children}
+		</Comp>
+	);
+};
