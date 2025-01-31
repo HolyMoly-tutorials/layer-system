@@ -24,9 +24,9 @@ export const Button = ({
 		<Container
 			backgroundColor={backgroundColor}
 			width={width}
-			height="600"
-			className={stateClassName}
+			height={600}
 			asChild
+			className={stateClassName}
 		>
 			<button>
 				<Content paddingX={300} gap={50}>
