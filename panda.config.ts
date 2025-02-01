@@ -184,8 +184,6 @@ export default defineConfig({
 		"--rgb-yellow-800": "224 126 0",
 		"--rgb-yellow-900": "214 107 0",
 
-		"--white": "rgb(var(--rgb-white))",
-		"--black": "rgb(var(--rgb-black))",
 		"--gray-000": "rgb(var(--rgb-gray-000))",
 		"--gray-050": "rgb(var(--rgb-gray-050))",
 		"--gray-100": "rgb(var(--rgb-gray-100))",
