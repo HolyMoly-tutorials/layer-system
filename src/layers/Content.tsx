@@ -171,7 +171,5 @@ export const Content = styled("div", {
 		align: "center",
 		justify: "center",
 		padding: 0,
-		paddingX: 0,
-		paddingY: 0,
 	},
 });
