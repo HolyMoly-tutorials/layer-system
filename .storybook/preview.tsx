@@ -1,15 +1,10 @@
 import React from "react";
-import { ThemeProvider } from "../src/components/theme-provider";
 import type { Preview } from "@storybook/react";
 
 const preview: Preview = {
 	decorators: [
 		(Story) => {
-			return (
-				<ThemeProvider>
-					<Story />
-				</ThemeProvider>
-			);
+			return <Story />;
 		},
 	],
 	parameters: {
